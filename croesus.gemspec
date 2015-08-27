@@ -9,9 +9,9 @@ Gem::Specification.new do |s|
   s.version     = Croesus::VERSION
   s.authors     = ["Ersin Akinci"]
   s.email       = ["ersin@twomaestros.com"]
-  s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of Croesus."
-  s.description = "TODO: Description of Croesus."
+  s.homepage    = "https://github.com/twomaestros/croesus"
+  s.summary     = "Lightweight token-based auth for Rails"
+  s.description = "Devise for token-based authentication and authorization in Rails apps."
   s.license     = "MIT"
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
