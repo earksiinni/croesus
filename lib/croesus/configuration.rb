@@ -13,8 +13,8 @@ module Croesus
       Mapping.new(params).tap { |m| mappings << m }
     end
     
-    def find_mapping_for_create_path(path)
-      selected_mappings = mappings.select { |mapping| mapping.create_path == path }
+    def find_mapping_for_authenticatables_path(path)
+      selected_mappings = mappings.select { |mapping| mapping.authenticatables_path == path }
       
       raise StandardError, \
         "More than one Croesus resource was found for the path POST #{path}: " \

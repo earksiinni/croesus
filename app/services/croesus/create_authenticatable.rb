@@ -7,7 +7,7 @@ module Croesus
     end
     
     def initialize(params)
-      mapping                      = Croesus.config.find_mapping_for_create_path params[:request].fullpath
+      mapping                      = Croesus.config.find_mapping_for_authenticatables_path params[:request].fullpath
       self.resource                = mapping.resource
       self.klass                   = mapping.klass
       self.local_credential_params = params[:params][:authenticatable].extract!(:username, :password, :password_confirmation).symbolize_keys
