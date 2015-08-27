@@ -1,4 +1,3 @@
 Rails.application.routes.draw do
-
-  mount Croesus::Engine => "/croesus"
+  croesus_for :fruit_bats
 end
