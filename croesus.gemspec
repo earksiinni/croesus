@@ -7,8 +7,8 @@ require "croesus/version"
 Gem::Specification.new do |s|
   s.name        = "croesus"
   s.version     = Croesus::VERSION
-  s.authors     = [""]
-  s.email       = ["ersin.akinci@gmail.com"]
+  s.authors     = ["Ersin Akinci"]
+  s.email       = ["ersin@twomaestros.com"]
   s.homepage    = "TODO"
   s.summary     = "TODO: Summary of Croesus."
   s.description = "TODO: Description of Croesus."
@@ -19,4 +19,7 @@ Gem::Specification.new do |s|
   s.add_dependency "rails", "~> 4.2.4"
 
   s.add_development_dependency "sqlite3"
+  s.add_development_dependency "rspec-rails"
+  s.add_development_dependency "capybara"
+  s.add_development_dependency "factory_girl_rails"
 end
