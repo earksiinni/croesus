@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'routes' do
+RSpec.describe 'routes' do
   specify 'routes' do
     expect(post('/fruit_bats')).to route_to('croesus/authenticatables#create')
     expect(post(fruit_bats_path)).to route_to('croesus/authenticatables#create')

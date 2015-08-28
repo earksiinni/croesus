@@ -18,6 +18,8 @@ Gem::Specification.new do |s|
 
   s.add_dependency "rails", "~> 4.2.4"
   s.add_dependency "virtus"
+  s.add_dependency "jbuilder"
+  s.add_dependency "jwt"
 
   s.add_development_dependency "pg"
   s.add_development_dependency "rspec-rails"

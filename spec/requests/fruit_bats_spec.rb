@@ -1,11 +1,12 @@
 require 'rails_helper'
 
-describe '/fruit_bats' do
+RSpec.describe '/fruit_bats' do
   context 'POST /fruit_bats' do
     let(:username)  { 'ersin@twomaestros.com' }
     let(:password)  { 'abcdefg' }
     let(:fangs)     { 'medium' }
     let(:fruit_bat) { FruitBat.last }
+    let(:session)   { fruit_bat.sessions.last }
     
     before do
       do_post 
@@ -16,6 +17,7 @@ describe '/fruit_bats' do
     end
     
     it 'responds with a fruit bat' do
+      expect(json['fruit_bat']['id']).to eq fruit_bat.id
       expect(json['fruit_bat']['fangs']).to eq fangs
     end
     
@@ -24,11 +26,11 @@ describe '/fruit_bats' do
     end
     
     it 'responds with a session' do
-      expect(json['session']['token']).to eq JWT.encode({ username: username, secret: fruit_bat.sessions.last.secret }, nil, 'none')
+      expect(json['session']['token']).to eq session.token
     end
     
     it 'responds with a nonce in the header' do
-      expect(response.headers['Authorization']).to eq "Token nonce=#{fruit_bat.sessions.last.nonce}"
+      expect(response.headers['Authorization']).to eq "Token nonce=\"#{fruit_bat.sessions.last.nonce}\""
     end
   end
   

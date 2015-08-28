@@ -1,0 +1,1 @@
+json.partial! 'croesus/sessions/session', session: @session

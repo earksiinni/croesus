@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150827033638) do
+ActiveRecord::Schema.define(version: 20150828003259) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,13 +24,28 @@ ActiveRecord::Schema.define(version: 20150827033638) do
     t.string   "username",             null: false
     t.string   "encrypted_password",   null: false
     t.string   "salt",                 null: false
-    t.string   "authenticatable_type", null: false
     t.integer  "authenticatable_id",   null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string   "authenticatable_type", null: false
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
   end
 
-  add_index "local_credentials", ["authenticatable_type"], name: "index_local_credentials_on_authenticatable_type", using: :btree
+  add_index "local_credentials", ["authenticatable_type", "authenticatable_id"], name: "index_local_credentials_on_authenticatable", unique: true, using: :btree
   add_index "local_credentials", ["username"], name: "index_local_credentials_on_username", using: :btree
+
+  create_table "sessions", force: :cascade do |t|
+    t.integer  "authenticatable_id",   null: false
+    t.string   "authenticatable_type", null: false
+    t.string   "secret",               null: false
+    t.string   "nonce",                null: false
+    t.string   "token",                null: false
+    t.datetime "expires_at",           null: false
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  add_index "sessions", ["authenticatable_type", "authenticatable_id"], name: "index_sessions_on_authenticatable_type_and_authenticatable_id", using: :btree
+  add_index "sessions", ["expires_at"], name: "index_sessions_on_expires_at", using: :btree
+  add_index "sessions", ["token"], name: "index_sessions_on_token", using: :btree
 
 end

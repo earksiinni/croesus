@@ -18,6 +18,7 @@ module Croesus
       ActiveRecord::Base.transaction do
         create_class_instance
         create_local_credential
+        create_session
       end
       
       authenticatable
@@ -45,6 +46,10 @@ module Croesus
         encrypted_password: encrypted_password,
         salt: salt
       )
+    end
+    
+    def create_session
+      CreateSession.call params: { username: local_credential_params[:username] }
     end
   end
 end

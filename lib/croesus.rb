@@ -1,5 +1,7 @@
 require "croesus/engine"
 require "virtus"
+require "jbuilder"
+require "jwt"
 
 module Croesus
   autoload :Mapping, 'croesus/mapping.rb'

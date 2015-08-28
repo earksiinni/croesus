@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Croesus::CreateAuthenticatable do
+RSpec.describe Croesus::CreateAuthenticatable do
   let(:username) { 'dracula@stoker.net' }
   let(:password) { 'countchocula' }
   let(:fangs)    { 'long' }

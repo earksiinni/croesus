@@ -5,6 +5,7 @@ require File.expand_path('../test_app/config/environment', __FILE__)
 require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
 Dir[Rails.root.join("../../spec/support/**/*.rb")].each { |f| require f }
+require 'factory_girl_rails'
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
@@ -50,4 +51,6 @@ RSpec.configure do |config|
   config.infer_spec_type_from_file_location!
   
   config.include Croesus::SpecHelpers
+  config.include Croesus::SpecMatchers
+  config.include FactoryGirl::Syntax::Methods
 end
