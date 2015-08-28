@@ -3,8 +3,9 @@ module Croesus
     module MapperHelpers
       def croesus_for(resource)
         resource              = resource.to_sym
+        singular              = resource.to_s.singularize
         authenticatables_path = "/#{resource}"
-        sessions_path         = "/#{resource}/:id/sessions"
+        sessions_path         = "/#{resource}/:#{singular}_id/sessions"
         mapping = Croesus.config.create_mapping(
           resource: resource, authenticatables_path: authenticatables_path, sessions_path: sessions_path
         )
